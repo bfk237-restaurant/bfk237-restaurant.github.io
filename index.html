@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFK Restaurant | Gastronomie Sénégalaise Authentique à Toulon</title>
+    
+    <meta name="description" content="Découvrez BFK, votre restaurant africain authentique à Toulon. Savourez nos spécialités sénégalaises : Dibi, Thieboudienne, Mafé et Yassa au 231 Av de la République.">
+    <meta name="keywords" content="restaurant africain toulon, cuisine sénégalaise toulon, dibi agneau toulon, thieboudienne toulon, maffé toulon, bfk restaurant toulon, manger africain var">
+    <meta property="og:title" content="BFK Restaurant | Cuisine Sénégalaise Authentique à Toulon">
+    <meta property="og:image" content="images/Dibi agneau avec alloco.jpeg">
+    <meta name="geo.region" content="FR-83">
+    <meta name="geo.placename" content="Toulon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #c5a059;       /* Teinte dorée professionnelle */
+            --dark: #121212;       /* Anthracite luxe */
+            --cream: #faf9f6;      /* Blanc cassé type papier */
+            --white: #ffffff;
+            --primary: #d35400;    /* Teinte terre cuite */
+            --transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Reset & Base */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
+
+        /* Navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 20px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+        }
+        .logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; font-weight: bold; }
+        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 30px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero Section */
+        header {
+            height: 95vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Dibi agneau avec alloco.jpeg');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 20px;
+        }
+        .hero-sub { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: 300; }
+        header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.5rem); margin-bottom: 30px; }
+        .btn-gold { 
+            border: 1px solid var(--gold); color: white; padding: 18px 45px; 
+            text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; 
+            text-transform: uppercase; transition: var(--transition); background: transparent;
+        }
+        .btn-gold:hover { background: var(--gold); transform: translateY(-5px); }
+
+        /* Section À Propos */
+        .about { padding: 100px 15%; text-align: center; background: var(--white); }
+        .about h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 25px; }
+        .about p { font-size: 1.1rem; color: #666; line-height: 1.8; max-width: 800px; margin: 0 auto; }
+
+        /* Menu Gastronomique */
+        .section-menu { padding: 100px 8%; }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 15px; }
+        .divider { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
+
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 50px; }
+        .menu-card { background: var(--white); padding: 50px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.02); }
+        .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 35px; text-align: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 15px; }
+
+        /* Alignement Parfait des Prix */
+        .menu-item { display: flex; align-items: baseline; margin-bottom: 15px; gap: 10px; }
+        .item-name { font-weight: 500; font-size: 1rem; color: var(--dark); }
+        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; height: 1px; }
+        .price { color: var(--primary); font-weight: 600; white-space: nowrap; font-size: 1.1rem; min-width: 50px; text-align: right; }
+
+        /* Galerie Vitrine */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; }
+        .gallery-item { position: relative; height: 450px; overflow: hidden; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4); opacity: 0; transition: var(--transition);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay span { color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem; border-bottom: 1px solid white; padding-bottom: 5px; }
+
+        /* Informations & Horaires */
+        .info-section { padding: 100px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; background: var(--white); }
+        .hours-list { list-style: none; margin-top: 25px; }
+        .hours-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+        .closed { color: var(--gold); font-weight: 600; }
+
+        /* Pied de Page */
+        footer { background: var(--dark); color: white; padding: 80px 8% 40px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 60px; }
+        .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 25px; }
+        .footer-col p { color: #888; font-size: 0.9rem; line-height: 1.6; margin-bottom: 10px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 40px; text-align: center; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
+
+        /* Adaptabilité Mobile */
+        @media (max-width: 900px) {
+            .info-section, .menu-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .gallery-item { height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">BFK</a>
+        <div class="nav-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#menu">La Carte</a>
+            <a href="#galerie">Spécialités</a>
+            <a href="#contact">Réservation</a>
+        </div>
+    </nav>
+
+    <header id="accueil">
+        <span class="hero-sub">L'Art Culinaire Sénégalais</span>
+        <h1>BFK RESTAURANT</h1>
+        <a href="#menu" class="btn-gold">Découvrir la Table</a>
+    </header>
+
+    <section class="about">
+        <h2>Une Escale à Dakar</h2>
+        <p>Bienvenue chez BFK, une expérience sensorielle unique ancrée dans la tradition sénégalaise et sublimée à Toulon. Nous préparons chaque plat avec passion pour vous offrir le meilleur de notre terroir.</p>
+    </section>
+
+    <section class="section-menu" id="menu">
+        <div class="section-header">
+            <h2>Notre Carte</h2>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>Nos Plats</h3>
+                <div class="menu-item"><span>Riz au Poisson avec légumes</span><div class="dots"></div><span class="price">15 €</span></div>
+                <div class="menu-item"><span>Riz à la Viande</span><div class="dots"></div><span class="price">15 €</span></div>
+                <div class="menu-item"><span>Mafé</span><div class="dots"></div><span class="price">15 €</span></div>
+                <div class="menu-item"><span>Yassa Poisson / Poulet</span><div class="dots"></div><span class="price">15 €</span></div>
+                <div class="menu-item"><span>Thiéré bassé</span><div class="dots"></div><span class="price">16 €</span></div>
+                <div class="menu-item"><span>Atiéké poisson / poulet</span><div class="dots"></div><span class="price">15 €</span></div>
+                <div class="menu-item"><span>Dibi agneau</span><div class="dots"></div><span class="price">18 €</span></div>
+                <div class="menu-item"><span>Poisson / Poulet Braisé</span><div class="dots"></div><span class="price">15 €</span></div>
+            </div>
+
+            <div class="menu-card">
+                <h3>Entrées & Desserts</h3>
+                <div class="menu-item"><span>Pastel</span><div class="dots"></div><span class="price">5 €</span></div>
+                <div class="menu-item"><span>Fataya</span><div class="dots"></div><span class="price">5 €</span></div>
+                <div class="menu-item"><span>Nems</span><div class="dots"></div><span class="price">6 €</span></div>
+                <div class="menu-item"><span>Thiakry / Ngalakh</span><div class="dots"></div><span class="price">5 €</span></div>
+                <div class="menu-item"><span>Salades de Fruits</span><div class="dots"></div><span class="price">5 €</span></div>
+                
+                <h3 style="margin-top: 30px;">Boissons</h3>
+                <div class="menu-item"><span>Verre de Jus (Bissap, Bouye, Gingembre)</span><div class="dots"></div><span class="price">3 €</span></div>
+                <div class="menu-item"><span>Jus Maison 1L</span><div class="dots"></div><span class="price">10 €</span></div>
+                <div class="menu-item"><span>Coca, Fanta, Orangina, Oasis</span><div class="dots"></div><span class="price">2 €</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-grid" id="galerie">
+        <div class="gallery-item">
+            <img src="images/Dibi agneau avec alloco.jpeg" alt="Dibi Agneau">
+            <div class="gallery-overlay"><span>Dibi Agneau</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Mafe viande.jpeg" alt="Mafé">
+            <div class="gallery-overlay"><span>Le Mafé</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Yassa poisson.jpeg" alt="Yassa Poisson">
+            <div class="gallery-overlay"><span>Yassa Poisson</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Attieke poisson avec alloco.jpeg" alt="Attiéké Poisson">
+            <div class="gallery-overlay"><span>Attiéké Poisson</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Attieke poulet avec allocos.jpeg" alt="Attiéké Poulet">
+            <div class="gallery-overlay"><span>Attiéké Poulet</span></div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Riz rouge avec poissons  légumes carotte chou manioc aubergine nave.jpeg" alt="Thieboudienne">
+            <div class="gallery-overlay"><span>Thieboudienne</span></div>
+        </div>
+    </section>
+
+    <section class="info-section" id="contact">
+        <div>
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px;">Horaires</h2>
+            <ul class="hours-list">
+                <li><span>Lundi - Samedi</span> <span>12:00 - 15:00 | 19:00 - 23:00</span></li>
+                <li><span>Dimanche</span> <span class="closed">Fermé</span></li>
+            </ul>
+        </div>
+        <div>
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px;">Accès & Réservation</h2>
+            <p>📍 231 Av de la République, 83000 Toulon</p>
+            <p>📞 07 53 71 58 25 | 09 73 11 93 10</p>
+            <p>📧 contact@bfk-toulon.com</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>BFK Restaurant</h4>
+                <p>La référence du goût et de l'hospitalité sénégalaise au cœur de Toulon.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Suivez-nous</h4>
+                <p>Instagram / Facebook</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 BFK TOULON - TOUS DROITS RÉSERVÉS.
+        </div>
+    </footer>
+
+</body>
+</html>
