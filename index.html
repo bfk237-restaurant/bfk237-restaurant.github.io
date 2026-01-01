@@ -6,7 +6,7 @@
     <title>BFK 237 | Gastronomie Sénégalaise Authentique à Toulon</title>
     
     <meta name="description" content="Découvrez BFK 237, votre restaurant africain authentique à Toulon. Savourez nos spécialités sénégalaises : Dibi, Thieboudienne, Mafé et Yassa au 231 Av de la République.">
-    <meta name="keywords" content="restaurant africain toulon, cuisine sénégalaise toulon, dibi agneau toulon, thieboudienne toulon, maffé toulon, bfk 237 toulon, manger africain var">
+    <meta name="keywords" content="restaurant africain toulon, cuisine sénégalaise toulon, dibi agneau toulon, thieboudienne toulon, maffé toulon, bfk 237 toulon">
     <meta property="og:title" content="BFK 237 | Cuisine Sénégalaise Authentique à Toulon">
     <meta property="og:image" content="images/Dibi agneau avec alloco.jpeg">
     <meta name="geo.region" content="FR-83">
@@ -16,34 +16,28 @@
     
     <style>
         :root {
-            --gold: #c5a059;       /* Teinte dorée professionnelle */
-            --dark: #121212;       /* Anthracite luxe */
-            --cream: #faf9f6;      /* Blanc cassé type papier */
+            --gold: #c5a059;
+            --dark: #121212;
+            --cream: #faf9f6;
             --white: #ffffff;
-            --primary: #d35400;    /* Teinte terre cuite */
+            --primary: #d35400;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        /* Reset & Base */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
 
-        /* Navigation Optimisée */
+        /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 15px 8%;
+            background: rgba(255, 255, 255, 0.98); padding: 15px 8%;
             display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+            position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.03);
         }
         .logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; font-weight: bold; }
-        
         .nav-links { display: flex; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--dark); margin-left: 30px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
         .nav-links a:hover { color: var(--gold); }
-
-        /* Bouton Mobile (Burger) */
         .mobile-btn { display: none; background: none; border: none; cursor: pointer; color: var(--gold); font-size: 1.8rem; }
 
         /* Hero Section */
@@ -59,26 +53,33 @@
         .btn-gold { border: 1px solid var(--gold); color: white; padding: 18px 45px; text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); background: transparent; }
         .btn-gold:hover { background: var(--gold); transform: translateY(-5px); }
 
-        /* Sections Standards */
+        /* Sections */
         .section { padding: 100px 8%; }
         .about { padding: 100px 15%; text-align: center; background: var(--white); }
         .about h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 25px; }
         .about p { font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto; }
 
-        /* Menu Gastronomique */
+        /* Menu Design */
         .section-header { text-align: center; margin-bottom: 70px; }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 15px; }
         .divider { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
 
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 50px; }
-        .menu-card { background: var(--white); padding: 50px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.02); }
+        .menu-card { background: var(--white); padding: 40px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.02); }
         .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 35px; text-align: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 15px; }
 
-        .menu-item { display: flex; align-items: baseline; margin-bottom: 15px; gap: 10px; }
+        /* Styles des articles avec descriptions */
+        .menu-block { margin-bottom: 25px; }
+        .menu-header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
         .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; height: 1px; }
-        .price { color: var(--primary); font-weight: 600; white-space: nowrap; font-size: 1.1rem; min-width: 50px; text-align: right; }
+        .item-name { font-weight: 600; color: var(--dark); font-size: 1.05rem; text-transform: uppercase; }
+        .item-desc { font-size: 0.85rem; color: #666; font-style: italic; margin-top: 5px; line-height: 1.4; }
+        .price { color: var(--primary); font-weight: 700; white-space: nowrap; font-size: 1.1rem; }
 
-        /* Galerie Vitrine */
+        /* Style simplifié pour les boissons */
+        .drink-item { display: flex; align-items: baseline; margin-bottom: 15px; gap: 10px; }
+
+        /* Galerie */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; }
         .gallery-item { position: relative; height: 450px; overflow: hidden; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; }
@@ -91,16 +92,15 @@
         .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; background: var(--white); }
         .hours-list { list-style: none; margin-top: 25px; }
         .hours-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
-        .closed { color: var(--gold); font-weight: 600; }
-
-        /* Pied de Page */
+        
+        /* Footer */
         footer { background: var(--dark); color: white; padding: 80px 8% 40px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 60px; }
         .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 25px; }
         .footer-col p { color: #888; font-size: 0.9rem; margin-bottom: 10px; }
         .footer-bottom { border-top: 1px solid #222; padding-top: 40px; text-align: center; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
 
-        /* Adaptabilité Mobile (Menu Burger) */
+        /* Mobile */
         @media (max-width: 900px) {
             nav { padding: 15px 5%; }
             .mobile-btn { display: block; }
@@ -111,7 +111,6 @@
             }
             .nav-links.active { right: 0; }
             .nav-links a { margin: 20px 0; font-size: 1.2rem; }
-            
             .info-section, .menu-grid { grid-template-columns: 1fr; }
             .gallery-item { height: 350px; }
         }
@@ -138,7 +137,7 @@
 
     <section class="about section">
         <h2>Une Escale à Dakar</h2>
-        <p>Bienvenue chez BFK 237, une expérience sensorielle unique ancrée dans la tradition sénégalaise et sublimée à Toulon. Nous préparons chaque plat avec passion pour vous offrir le meilleur de notre terroir.</p>
+        <p>Bienvenue chez BFK 237. Entre la rade de Toulon et les rivages du Sénégal, la mer tisse un pont de saveurs, de chaleur et de rencontres.</p>
     </section>
 
     <section class="section-menu section" id="menu">
@@ -150,32 +149,101 @@
         <div class="menu-grid">
             <div class="menu-card">
                 <h3>Nos Plats</h3>
-                <div class="menu-item"><span>Riz au Poisson avec légumes</span><div class="dots"></div><span class="price">15 €</span></div>
-                <div class="menu-item"><span>Riz à la Viande</span><div class="dots"></div><span class="price">15 €</span></div>
-                <div class="menu-item"><span>Mafé</span><div class="dots"></div><span class="price">15 €</span></div>
-                <div class="menu-item"><span>Yassa Poisson / Poulet</span><div class="dots"></div><span class="price">15 €</span></div>
-                <div class="menu-item"><span>Thiéré bassé</span><div class="dots"></div><span class="price">16 €</span></div>
-                <div class="menu-item"><span>Atiéké poisson / poulet</span><div class="dots"></div><span class="price">15 €</span></div>
-                <div class="menu-item"><span>Dibi agneau</span><div class="dots"></div><span class="price">18 €</span></div>
-                <div class="menu-item"><span>Poisson / Poulet Braisé</span><div class="dots"></div><span class="price">15 €</span></div>
+                
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Riz à la Viande (Bœuf ou Agneau)</span><div class="dots"></div><span class="price">15 €</span></div>
+                    <p class="item-desc">Riz, protéines, légumes et piment.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Dibi Agneau</span><div class="dots"></div><span class="price">18 €</span></div>
+                    <p class="item-desc">Protéines, marinade et oignons.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Athiéké (Poisson ou Poulet)</span><div class="dots"></div><span class="price">15 €</span></div>
+                    <p class="item-desc">Semoule de manioc, protéine, légumes et piment.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Mafé (Bœuf ou Poulet)</span><div class="dots"></div><span class="price">15 €</span></div>
+                    <p class="item-desc">Riz, protéines, légumes, cacahuète et piment.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Thiéré Bassé (Poulet ou Agneau)</span><div class="dots"></div><span class="price">16 €</span></div>
+                    <p class="item-desc">Couscous, protéines, légumes et piment.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Poisson ou Poulet Braisé</span><div class="dots"></div><span class="price">15 €</span></div>
+                    <p class="item-desc">Protéines, marinade et frites.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Riz au Poisson</span><div class="dots"></div><span class="price">15 €</span></div>
+                    <p class="item-desc">Riz, protéines, légumes et piment.</p>
+                </div>
+
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Yassa (Poisson ou Poulet)</span><div class="dots"></div><span class="price">15 €</span></div>
+                    <p class="item-desc">Riz, protéines, légumes, ail, olives et piment.</p>
+                </div>
             </div>
 
             <div class="menu-card">
-                <h3>Entrées & Desserts</h3>
-                <div class="menu-item"><span>Pastel</span><div class="dots"></div><span class="price">5 €</span></div>
-                <div class="menu-item"><span>Fataya</span><div class="dots"></div><span class="price">5 €</span></div>
-                <div class="menu-item"><span>Nems</span><div class="dots"></div><span class="price">6 €</span></div>
-                <div class="menu-item"><span>Thiakry / Ngalakh</span><div class="dots"></div><span class="price">5 €</span></div>
-                <div class="menu-item"><span>Salades de Fruits</span><div class="dots"></div><span class="price">5 €</span></div>
+                <h3>Entrées</h3>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Pastel ×3</span><div class="dots"></div><span class="price">5 €</span></div>
+                    <p class="item-desc">Beignet farcie au thon.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Fataya ×3</span><div class="dots"></div><span class="price">5 €</span></div>
+                    <p class="item-desc">Beignet farcie au bœuf.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Nems ×3</span><div class="dots"></div><span class="price">6 €</span></div>
+                    <p class="item-desc">Poulet.</p>
+                </div>
+
+                <h3 style="margin-top: 30px;">Desserts</h3>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Thiakry</span><div class="dots"></div><span class="price">5 €</span></div>
+                    <p class="item-desc">Mil, yaourts sucré.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Ngalakh</span><div class="dots"></div><span class="price">5 €</span></div>
+                    <p class="item-desc">Mil, yaourts, pâtes d'arachide.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Salade de Fruits</span><div class="dots"></div><span class="price">5 €</span></div>
+                    <p class="item-desc">Fruits de saison.</p>
+                </div>
                 
                 <h3 style="margin-top: 30px;">Boissons</h3>
-                <div class="menu-item"><span>Verre de Jus (Bissap, Baobab, Gingembre)</span><div class="dots"></div><span class="price">3 €</span></div>
-                <div class="menu-item"><span>Bouteille Jus 50cl (Bissap, Baobab, Gingembre)</span><div class="dots"></div><span class="price">5 €</span></div>
-                <div class="menu-item"><span>Bouteille Jus 1L (Bissap, Baobab, Gingembre)</span><div class="dots"></div><span class="price">10 €</span></div>
-                <div class="menu-item"><span>Coca, Fanta, Oasis</span><div class="dots"></div><span class="price">2 €</span></div>
-                <div class="menu-item"><span>Orangina, Ice Tea</span><div class="dots"></div><span class="price">2 €</span></div>
-                <div class="menu-item"><span>Eau Minérale 50cl</span><div class="dots"></div><span class="price">2 €</span></div>
-                <div class="menu-item"><span>Eau Gazeuse</span><div class="dots"></div><span class="price">2 €</span></div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Verre de Jus Fait Maison</span><div class="dots"></div><span class="price">3 €</span></div>
+                    <p class="item-desc">Bissap, Jus de Baobab, Gingembre.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Bouteille Jus 50cl (Maison)</span><div class="dots"></div><span class="price">5 €</span></div>
+                    <p class="item-desc">Bissap, Jus de Baobab, Gingembre.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Bouteille Jus 1L (Maison)</span><div class="dots"></div><span class="price">10 €</span></div>
+                    <p class="item-desc">Bissap, Jus de Baobab, Gingembre.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Sodas 33cl</span><div class="dots"></div><span class="price">2 €</span></div>
+                    <p class="item-desc">Coca-Cola, Zéro, Fanta orange, Oasis tropical, Orangina, Ice-Tea Pêche.</p>
+                </div>
+                <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Eau Minérale 50cl</span><div class="dots"></div><span class="price">2 €</span></div>
+                    <p class="item-desc">Evian, Perrier.</p>
+                </div>
+                 <div class="menu-block">
+                    <div class="menu-header"><span class="item-name">Eau Gazeuse</span><div class="dots"></div><span class="price">2 €</span></div>
+                </div>
             </div>
         </div>
     </section>
@@ -193,7 +261,7 @@
         <div>
             <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px;">Horaires</h2>
             <ul class="hours-list">
-                <li><span>Lundi - Dimanche</span> <span>11:00 - 23:00</span></li>
+                <li><span>Lundi - Dimanche</span> <span style="color: var(--gold); font-weight: bold;">11:00 - 23:00</span></li>
             </ul>
         </div>
         <div>
@@ -224,6 +292,52 @@
             const links = document.getElementById('navLinks');
             links.classList.toggle('active');
         }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "BFK 237",
+      "image": "https://bfk237-restaurant.github.io/images/Dibi%20agneau%20avec%20alloco.jpeg",
+      "url": "https://bfk237-restaurant.github.io",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "231 Av de la République",
+        "addressLocality": "Toulon",
+        "postalCode": "83000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.1206, 
+        "longitude": 5.9329
+      },
+      "telephone": "+33753715825",
+      "servesCuisine": "Cuisine sénégalaise",
+      "priceRange": "€€",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "11:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "14:00",
+          "closes": "23:00"
+        }
+      ]
+    }
     </script>
 </body>
 </html>
