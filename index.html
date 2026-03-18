@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BFK 237 | Gastronomie Sénégalaise Authentique à Toulon</title>
-    
     <meta name="description" content="Découvrez BFK 237, votre restaurant africain authentique à Toulon. Savourez nos spécialités sénégalaises : Dibi, Thieboudienne, Mafé et Yassa au 231 Av de la République.">
     <meta name="keywords" content="restaurant africain toulon, cuisine sénégalaise toulon, dibi agneau toulon, thieboudienne toulon, maffé toulon, bfk 237 toulon">
     <meta property="og:title" content="BFK 237 | Cuisine Sénégalaise Authentique à Toulon">
@@ -12,333 +11,1025 @@
     <meta name="geo.region" content="FR-83">
     <meta name="geo.placename" content="Toulon">
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --gold: #c5a059;
-            --dark: #121212;
-            --cream: #faf9f6;
-            --white: #ffffff;
-            --primary: #d35400;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --espresso:  #0e0905;
+            --deep:      #1a1008;
+            --terracotta:#c4521a;
+            --terra-lt:  #e06535;
+            --gold:      #c9973a;
+            --gold-lt:   #e5b86a;
+            --cream:     #f5ede0;
+            --cream-dk:  #ede0cc;
+            --sand:      #d9c9a8;
+            --white:     #fdfaf6;
+            --text-muted:#9a8a72;
+            --ease:      cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--cream); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
 
-        /* Navigation */
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--white);
+            color: var(--espresso);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--espresso); }
+        ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+        /* ── LOADER ── */
+        #loader {
+            position: fixed; inset: 0; z-index: 9999;
+            background: var(--espresso);
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.8s var(--ease), visibility 0.8s;
+        }
+        #loader.hidden { opacity: 0; visibility: hidden; }
+        .loader-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem; color: var(--gold);
+            letter-spacing: 8px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+        /* ── NAV ── */
         nav {
-            background: rgba(255, 255, 255, 0.98); padding: 15px 8%;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 6%;
             display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+            height: 72px;
+            transition: all 0.5s var(--ease);
         }
-        .logo { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--gold); text-decoration: none; letter-spacing: 2px; font-weight: bold; }
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--dark); margin-left: 30px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
-        .nav-links a:hover { color: var(--gold); }
-        .mobile-btn { display: none; background: none; border: none; cursor: pointer; color: var(--gold); font-size: 1.8rem; }
-
-        /* Hero Section */
-        header {
-            height: 95vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/Dibi agneau avec alloco.jpeg');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; color: white; padding: 20px;
+        nav.scrolled {
+            background: rgba(14, 9, 5, 0.96);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 1px 0 rgba(201,151,58,0.15);
         }
-        .hero-sub { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 20px; font-weight: 300; }
-        header h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.5rem); margin-bottom: 30px; }
-        .btn-gold { border: 1px solid var(--gold); color: white; padding: 18px 45px; text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); background: transparent; }
-        .btn-gold:hover { background: var(--gold); transform: translateY(-5px); }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem; font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 4px;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .logo::before {
+            content: '';
+            display: block;
+            width: 8px; height: 8px;
+            background: var(--terracotta);
+            border-radius: 50%;
+        }
+        .nav-links { display: flex; align-items: center; gap: 40px; }
+        .nav-links a {
+            text-decoration: none; color: var(--cream);
+            font-size: 0.72rem; font-weight: 500;
+            text-transform: uppercase; letter-spacing: 2.5px;
+            position: relative; padding-bottom: 4px;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0;
+            width: 0; height: 1px;
+            background: var(--gold);
+            transition: width 0.3s var(--ease);
+        }
+        .nav-links a:hover { color: var(--gold-lt); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--terracotta) !important;
+            color: var(--white) !important;
+            padding: 10px 24px !important;
+            letter-spacing: 1.5px !important;
+        }
+        .nav-cta::after { display: none !important; }
+        .nav-cta:hover { background: var(--terra-lt) !important; }
+        .mobile-btn {
+            display: none; background: none; border: none;
+            cursor: pointer; color: var(--gold); font-size: 1.6rem;
+        }
 
-        /* Sections */
-        .section { padding: 100px 8%; }
-        .about { padding: 100px 15%; text-align: center; background: var(--white); }
-        .about h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 25px; }
-        .about p { font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto; }
+        /* ── HERO ── */
+        #hero {
+            height: 100vh; min-height: 700px;
+            position: relative;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('images/Dibi agneau avec alloco.jpeg') center/cover no-repeat;
+            transform: scale(1.1);
+            animation: heroZoom 12s ease-in-out infinite alternate;
+        }
+        @keyframes heroZoom { from { transform: scale(1.1); } to { transform: scale(1.18); } }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                170deg,
+                rgba(10,5,2,0.78) 0%,
+                rgba(14,9,5,0.55) 50%,
+                rgba(196,82,26,0.25) 100%
+            );
+        }
+        /* Subtle kente-inspired geometric accent */
+        .hero-pattern {
+            position: absolute; inset: 0;
+            background-image:
+                repeating-linear-gradient(45deg, rgba(201,151,58,0.03) 0, rgba(201,151,58,0.03) 1px, transparent 0, transparent 50%);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative; z-index: 2;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s var(--ease) 0.5s, transform 1s var(--ease) 0.5s;
+        }
+        .hero-content.visible { opacity: 1; transform: translateY(0); }
+        .hero-eyebrow {
+            font-size: 0.7rem; letter-spacing: 6px;
+            text-transform: uppercase; color: var(--gold-lt);
+            font-weight: 400; margin-bottom: 22px;
+            display: flex; align-items: center; justify-content: center; gap: 16px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after {
+            content: ''; display: block;
+            width: 40px; height: 1px; background: var(--gold);
+        }
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4.5rem, 14vw, 9rem);
+            font-weight: 300; color: var(--white);
+            line-height: 1; letter-spacing: 6px;
+            margin-bottom: 12px;
+        }
+        .hero-title span { color: var(--gold); font-style: italic; }
+        .hero-subtitle {
+            font-size: 0.85rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--sand);
+            font-weight: 300; margin-bottom: 50px;
+        }
+        .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-primary {
+            display: inline-block; text-decoration: none;
+            background: var(--terracotta); color: var(--white);
+            padding: 16px 42px; font-size: 0.72rem;
+            letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+            transition: all 0.3s var(--ease);
+            position: relative; overflow: hidden;
+        }
+        .btn-primary::before {
+            content: ''; position: absolute;
+            top: 0; left: -100%; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.12);
+            transition: left 0.4s var(--ease);
+        }
+        .btn-primary:hover { background: var(--terra-lt); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(196,82,26,0.4); }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-outline {
+            display: inline-block; text-decoration: none;
+            border: 1px solid rgba(201,151,58,0.5); color: var(--gold-lt);
+            padding: 16px 42px; font-size: 0.72rem;
+            letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+            transition: all 0.3s var(--ease);
+        }
+        .btn-outline:hover { border-color: var(--gold); background: rgba(201,151,58,0.1); transform: translateY(-3px); }
 
-        /* Menu Design */
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 15px; }
-        .divider { width: 60px; height: 2px; background: var(--gold); margin: 0 auto; }
+        .hero-scroll {
+            position: absolute; bottom: 40px; left: 50%;
+            transform: translateX(-50%);
+            z-index: 2; display: flex; flex-direction: column;
+            align-items: center; gap: 8px;
+            color: var(--sand); font-size: 0.65rem;
+            letter-spacing: 3px; text-transform: uppercase;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        .hero-scroll::after {
+            content: ''; display: block;
+            width: 1px; height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+        }
+        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 50px; }
-        .menu-card { background: var(--white); padding: 40px; border-radius: 4px; box-shadow: 0 10px 40px rgba(0,0,0,0.02); }
-        .menu-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 35px; text-align: center; border-bottom: 1px solid #f5f5f5; padding-bottom: 15px; }
+        /* ── ABOUT ── */
+        #about {
+            background: var(--espresso);
+            padding: 120px 6%;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+            align-items: center;
+        }
+        .about-text { order: 2; }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.65rem; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--terracotta);
+            margin-bottom: 20px; font-weight: 500;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 400; color: var(--cream);
+            line-height: 1.2; margin-bottom: 28px;
+        }
+        .section-title em { color: var(--gold); font-style: italic; }
+        .about-body {
+            color: var(--text-muted);
+            font-size: 1rem; font-weight: 300;
+            line-height: 1.9; margin-bottom: 36px;
+        }
+        .about-stats {
+            display: flex; gap: 40px;
+        }
+        .stat-item { text-align: left; }
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem; color: var(--gold);
+            font-weight: 600; line-height: 1;
+            display: block;
+        }
+        .stat-label {
+            font-size: 0.7rem; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--text-muted);
+        }
+        .about-visual {
+            order: 1; position: relative;
+        }
+        .about-img-wrap {
+            position: relative;
+            aspect-ratio: 3/4; overflow: hidden;
+        }
+        .about-img-wrap img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: brightness(0.9) saturate(1.1);
+            transition: transform 1s var(--ease);
+        }
+        .about-img-wrap:hover img { transform: scale(1.04); }
+        .about-img-wrap::before {
+            content: '';
+            position: absolute; top: -20px; left: -20px; right: 20px; bottom: 20px;
+            border: 1px solid rgba(201,151,58,0.3);
+            z-index: -1; pointer-events: none;
+        }
+        .about-accent {
+            position: absolute;
+            bottom: -30px; right: -30px;
+            width: 120px; height: 120px;
+            background: var(--terracotta);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .about-accent span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.7rem; color: var(--white);
+            letter-spacing: 2px; text-transform: uppercase;
+            text-align: center; line-height: 1.6;
+        }
 
-        /* Styles des articles avec descriptions */
-        .menu-block { margin-bottom: 25px; }
-        .menu-header { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-        .dots { flex-grow: 1; border-bottom: 1px dotted #ccc; height: 1px; }
-        .item-name { font-weight: 600; color: var(--dark); font-size: 1.05rem; text-transform: uppercase; }
-        .item-desc { font-size: 0.85rem; color: #666; font-style: italic; margin-top: 5px; line-height: 1.4; }
-        .price { color: var(--primary); font-weight: 700; white-space: nowrap; font-size: 1.1rem; }
+        /* ── MENU ── */
+        #menu {
+            background: var(--white);
+            padding: 120px 6%;
+        }
+        .menu-header-wrap {
+            display: flex; justify-content: space-between;
+            align-items: flex-end; margin-bottom: 70px;
+        }
+        .menu-tabs {
+            display: flex; gap: 4px;
+        }
+        .tab-btn {
+            background: none; border: 1px solid var(--cream-dk);
+            padding: 10px 24px; cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.72rem; letter-spacing: 2px;
+            text-transform: uppercase; color: var(--text-muted);
+            transition: all 0.3s var(--ease);
+        }
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--terracotta); border-color: var(--terracotta);
+            color: var(--white);
+        }
+        .menu-panel { display: none; }
+        .menu-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 
-        /* Style simplifié pour les boissons */
-        .drink-item { display: flex; align-items: baseline; margin-bottom: 15px; gap: 10px; }
+        .menu-section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 4px;
+            color: var(--terracotta);
+            padding: 30px 40px 14px;
+            background: var(--cream);
+        }
 
-        /* Galerie */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; }
-        .gallery-item { position: relative; height: 450px; overflow: hidden; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; }
-        .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); opacity: 0; transition: var(--transition); display: flex; align-items: center; justify-content: center; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay span { color: white; font-family: 'Playfair Display', serif; font-size: 1.8rem; border-bottom: 1px solid white; padding-bottom: 5px; }
+        .menu-column { background: var(--cream); }
+        .menu-item {
+            padding: 22px 40px;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: flex; justify-content: space-between;
+            align-items: flex-start; gap: 20px;
+            transition: background 0.2s;
+        }
+        .menu-item:hover { background: rgba(196,82,26,0.04); }
+        .item-info { flex: 1; }
+        .item-name {
+            font-size: 0.9rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 1.5px;
+            color: var(--espresso); margin-bottom: 4px;
+        }
+        .item-desc {
+            font-size: 0.82rem; color: var(--text-muted);
+            font-style: italic; font-weight: 300;
+        }
+        .item-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem; font-weight: 600;
+            color: var(--terracotta); white-space: nowrap;
+            padding-top: 2px;
+        }
 
-        /* Contact & Horaires */
-        .info-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; background: var(--white); }
-        .hours-list { list-style: none; margin-top: 25px; }
-        .hours-list li { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
-        
-        /* Footer */
-        footer { background: var(--dark); color: white; padding: 80px 8% 40px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 50px; margin-bottom: 60px; }
-        .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 25px; }
-        .footer-col p { color: #888; font-size: 0.9rem; margin-bottom: 10px; }
-        .footer-bottom { border-top: 1px solid #222; padding-top: 40px; text-align: center; color: #444; font-size: 0.75rem; letter-spacing: 1px; }
+        /* ── GALLERY ── */
+        #gallery {
+            padding: 120px 6%;
+            background: var(--espresso);
+        }
+        .gallery-intro {
+            display: flex; justify-content: space-between;
+            align-items: flex-end; margin-bottom: 50px;
+        }
+        .gallery-grid-wrap {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto auto;
+            gap: 3px;
+        }
+        .gallery-item {
+            position: relative; overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+        .gallery-item:nth-child(1) {
+            grid-column: 1 / 3;
+            aspect-ratio: auto;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block;
+            transition: transform 1.2s var(--ease), filter 0.5s;
+            filter: brightness(0.85) saturate(1.05);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.06);
+            filter: brightness(0.7) saturate(1.2);
+        }
+        .gallery-caption {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 30px 24px 20px;
+            background: linear-gradient(to top, rgba(10,5,2,0.85), transparent);
+            transform: translateY(100%);
+            transition: transform 0.45s var(--ease);
+        }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .gallery-caption-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem; color: var(--white);
+            font-style: italic;
+        }
+        .gallery-caption-sub {
+            font-size: 0.68rem; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--gold);
+            margin-top: 4px;
+        }
 
-        /* Mobile */
+        /* ── INFO / CONTACT ── */
+        #contact {
+            padding: 0;
+            display: grid; grid-template-columns: 1fr 1fr;
+        }
+        .contact-map {
+            min-height: 480px;
+            background: var(--deep);
+            position: relative; overflow: hidden;
+        }
+        .contact-map iframe {
+            width: 100%; height: 100%;
+            border: none; opacity: 0.75;
+            filter: grayscale(60%) invert(90%) hue-rotate(180deg);
+        }
+        .contact-map-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(14,9,5,0.5), transparent);
+            pointer-events: none;
+        }
+        .contact-info {
+            background: var(--espresso);
+            padding: 80px 60px;
+            display: flex; flex-direction: column;
+            justify-content: center;
+        }
+        .contact-block { margin-bottom: 40px; }
+        .contact-label {
+            font-size: 0.65rem; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--terracotta);
+            margin-bottom: 12px;
+        }
+        .contact-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem; color: var(--cream);
+            font-weight: 300;
+        }
+        .contact-value a { color: inherit; text-decoration: none; }
+        .hours-row {
+            display: flex; justify-content: space-between;
+            align-items: center; padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .hours-row .time { color: var(--gold); font-weight: 500; }
+        .reserve-btn {
+            display: inline-block; margin-top: 36px;
+            background: var(--terracotta); color: var(--white);
+            padding: 18px 40px; text-decoration: none;
+            font-size: 0.72rem; letter-spacing: 3px;
+            text-transform: uppercase; font-weight: 500;
+            transition: all 0.3s var(--ease);
+            align-self: flex-start;
+        }
+        .reserve-btn:hover { background: var(--terra-lt); transform: translateY(-3px); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--deep);
+            padding: 80px 6% 40px;
+        }
+        .footer-top {
+            display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px; padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 40px;
+        }
+        .footer-brand .logo-foot {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem; font-weight: 700;
+            color: var(--gold); letter-spacing: 5px;
+            display: block; margin-bottom: 18px;
+        }
+        .footer-brand p {
+            color: var(--text-muted); font-size: 0.9rem;
+            font-weight: 300; line-height: 1.8; max-width: 300px;
+        }
+        .footer-col-title {
+            font-size: 0.65rem; letter-spacing: 4px;
+            text-transform: uppercase; color: var(--terracotta);
+            margin-bottom: 22px;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            color: var(--text-muted); text-decoration: none;
+            font-size: 0.9rem; transition: color 0.25s;
+        }
+        .footer-links a:hover { color: var(--gold-lt); }
+        .social-icons { display: flex; gap: 16px; margin-top: 8px; }
+        .social-icon {
+            width: 40px; height: 40px;
+            border: 1px solid rgba(201,151,58,0.25);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted); text-decoration: none;
+            font-size: 0.75rem; letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .social-icon:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201,151,58,0.08);
+        }
+        .footer-bottom {
+            display: flex; justify-content: space-between;
+            align-items: center; flex-wrap: wrap; gap: 16px;
+            color: rgba(255,255,255,0.15);
+            font-size: 0.72rem; letter-spacing: 1px;
+        }
+        .footer-bottom span { color: var(--terracotta); opacity: 0.7; }
+
+        /* ── MOBILE MENU ── */
         @media (max-width: 900px) {
-            nav { padding: 15px 5%; }
             .mobile-btn { display: block; }
             .nav-links {
-                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-                background: var(--white); flex-direction: column; justify-content: center;
-                transition: 0.5s; box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                position: fixed; top: 0; right: -100%; width: 75%; height: 100vh;
+                background: var(--espresso); flex-direction: column;
+                justify-content: center; transition: right 0.5s var(--ease);
+                box-shadow: -20px 0 60px rgba(0,0,0,0.5);
+                gap: 30px;
             }
             .nav-links.active { right: 0; }
-            .nav-links a { margin: 20px 0; font-size: 1.2rem; }
-            .info-section, .menu-grid { grid-template-columns: 1fr; }
-            .gallery-item { height: 350px; }
+            .nav-links a { font-size: 1rem; }
+            #about { grid-template-columns: 1fr; gap: 50px; padding: 80px 6%; }
+            .about-visual { order: 1; }
+            .about-text { order: 2; }
+            .about-img-wrap::before { display: none; }
+            .about-accent { bottom: -16px; right: -16px; width: 90px; height: 90px; }
+            .menu-header-wrap { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .menu-panel.active { grid-template-columns: 1fr; }
+            .gallery-grid-wrap { grid-template-columns: 1fr 1fr; }
+            .gallery-item:nth-child(1) { grid-column: 1 / 3; }
+            #contact { grid-template-columns: 1fr; }
+            .contact-map { min-height: 280px; }
+            .contact-info { padding: 60px 30px; }
+            .footer-top { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .menu-tabs { flex-wrap: wrap; }
         }
+
+        /* ── REVEAL ANIMATIONS ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+        }
+        .reveal.visible { opacity: 1; transform: none; }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">BFK 237</a>
-        <button class="mobile-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
-        <div class="nav-links" id="navLinks">
-            <a href="#accueil" onclick="toggleMenu()">Accueil</a>
-            <a href="#menu" onclick="toggleMenu()">La Carte</a>
-            <a href="#galerie" onclick="toggleMenu()">Spécialités</a>
-            <a href="#contact" onclick="toggleMenu()">Réservation</a>
+<!-- LOADER -->
+<div id="loader">
+    <div class="loader-text">BFK</div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="navbar">
+    <a href="#hero" class="logo">BFK 237</a>
+    <button class="mobile-btn" onclick="toggleMenu()" aria-label="Menu">☰</button>
+    <div class="nav-links" id="navLinks">
+        <a href="#hero" onclick="closeMenu()">Accueil</a>
+        <a href="#menu" onclick="closeMenu()">La Carte</a>
+        <a href="#gallery" onclick="closeMenu()">Spécialités</a>
+        <a href="#contact" onclick="closeMenu()" class="nav-cta">Réserver</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-pattern"></div>
+    <div class="hero-content" id="heroContent">
+        <div class="hero-eyebrow">Cuisine Sénégalaise Authentique</div>
+        <h1 class="hero-title">BFK <span>237</span></h1>
+        <p class="hero-subtitle">Toulon · Depuis 2022</p>
+        <div class="hero-actions">
+            <a href="#menu" class="btn-primary">Découvrir la Carte</a>
+            <a href="#contact" class="btn-outline">Réserver une Table</a>
         </div>
-    </nav>
+    </div>
+    <div class="hero-scroll">Défiler</div>
+</section>
 
-    <header id="accueil">
-        <span class="hero-sub">L'Art Culinaire Sénégalais</span>
-        <h1>BFK 237</h1>
-        <a href="#menu" class="btn-gold">Découvrir la Table</a>
-    </header>
-
-    <section class="about section">
-        <h2>Une Escale à Dakar</h2>
-        <p>Bienvenue chez BFK 237. Entre la rade de Toulon et les rivages du Sénégal, la mer tisse un pont de saveurs, de chaleur et de rencontres.</p>
-    </section>
-
-    <section class="section-menu section" id="menu">
-        <div class="section-header">
-            <h2>Notre Carte</h2>
-            <div class="divider"></div>
+<!-- ABOUT -->
+<section id="about">
+    <div class="about-visual reveal">
+        <div class="about-img-wrap">
+            <img src="images/Mafe viande.jpeg" alt="Mafé - Spécialité BFK 237">
         </div>
-        
-        <div class="menu-grid">
-            <div class="menu-card">
-                <h3>Nos Plats</h3>
-                
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Riz à la Viande (Bœuf ou Agneau)</span><div class="dots"></div><span class="price">15 €</span></div>
-                    <p class="item-desc">Riz, protéines, légumes et piment.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Dibi Agneau</span><div class="dots"></div><span class="price">18 €</span></div>
-                    <p class="item-desc">Protéines, marinade et oignons.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Athiéké (Poisson ou Poulet)</span><div class="dots"></div><span class="price">15 €</span></div>
-                    <p class="item-desc">Semoule de manioc, protéine, légumes et piment.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Mafé (Bœuf ou Poulet)</span><div class="dots"></div><span class="price">15 €</span></div>
-                    <p class="item-desc">Riz, protéines, légumes, cacahuète et piment.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Thiéré Bassé (Poulet ou Agneau)</span><div class="dots"></div><span class="price">16 €</span></div>
-                    <p class="item-desc">Couscous, protéines, légumes et piment.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Poisson ou Poulet Braisé</span><div class="dots"></div><span class="price">15 €</span></div>
-                    <p class="item-desc">Protéines, marinade et frites.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Riz au Poisson</span><div class="dots"></div><span class="price">15 €</span></div>
-                    <p class="item-desc">Riz, protéines, légumes et piment.</p>
-                </div>
-
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Yassa (Poisson ou Poulet)</span><div class="dots"></div><span class="price">15 €</span></div>
-                    <p class="item-desc">Riz, protéines, légumes, ail, olives et piment.</p>
-                </div>
+        <div class="about-accent"><span>Fait<br>Maison</span></div>
+    </div>
+    <div class="about-text">
+        <span class="section-tag reveal">Notre Histoire</span>
+        <h2 class="section-title reveal reveal-delay-1">
+            Une Escale<br>à <em>Dakar</em>
+        </h2>
+        <p class="about-body reveal reveal-delay-2">
+            Entre la rade de Toulon et les rivages du Sénégal, la mer tisse un pont de saveurs, de chaleur et de rencontres. Chez BFK 237, chaque plat est un voyage — une invitation à découvrir l'âme d'une cuisine transmise de génération en génération, préparée avec amour et des ingrédients soigneusement sélectionnés.
+        </p>
+        <div class="about-stats reveal reveal-delay-3">
+            <div class="stat-item">
+                <span class="stat-num">15+</span>
+                <span class="stat-label">Plats Signature</span>
             </div>
-
-            <div class="menu-card">
-                <h3>Entrées</h3>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Pastel ×3</span><div class="dots"></div><span class="price">5 €</span></div>
-                    <p class="item-desc">Beignet farcie au thon.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Fataya ×3</span><div class="dots"></div><span class="price">5 €</span></div>
-                    <p class="item-desc">Beignet farcie au bœuf.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Nems ×3</span><div class="dots"></div><span class="price">6 €</span></div>
-                    <p class="item-desc">Poulet.</p>
-                </div>
-
-                <h3 style="margin-top: 30px;">Desserts</h3>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Thiakry</span><div class="dots"></div><span class="price">5 €</span></div>
-                    <p class="item-desc">Mil, yaourts sucré.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Ngalakh</span><div class="dots"></div><span class="price">5 €</span></div>
-                    <p class="item-desc">Mil, yaourts, pâtes d'arachide.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Salade de Fruits</span><div class="dots"></div><span class="price">5 €</span></div>
-                    <p class="item-desc">Fruits de saison.</p>
-                </div>
-                
-                <h3 style="margin-top: 30px;">Boissons</h3>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Verre de Jus Fait Maison</span><div class="dots"></div><span class="price">3 €</span></div>
-                    <p class="item-desc">Bissap, Jus de Baobab, Gingembre.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Bouteille Jus 50cl (Maison)</span><div class="dots"></div><span class="price">5 €</span></div>
-                    <p class="item-desc">Bissap, Jus de Baobab, Gingembre.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Bouteille Jus 1L (Maison)</span><div class="dots"></div><span class="price">10 €</span></div>
-                    <p class="item-desc">Bissap, Jus de Baobab, Gingembre.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Sodas 33cl</span><div class="dots"></div><span class="price">2 €</span></div>
-                    <p class="item-desc">Coca-Cola, Zéro, Fanta orange, Oasis tropical, Orangina, Ice-Tea Pêche.</p>
-                </div>
-                <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Eau Minérale 50cl</span><div class="dots"></div><span class="price">2 €</span></div>
-                    <p class="item-desc">Evian, Perrier.</p>
-                </div>
-                 <div class="menu-block">
-                    <div class="menu-header"><span class="item-name">Eau Gazeuse</span><div class="dots"></div><span class="price">2 €</span></div>
-                </div>
+            <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Fait Maison</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">7j/7</span>
+                <span class="stat-label">Ouvert</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="gallery-grid" id="galerie">
-        <div class="gallery-item"><img src="images/Dibi agneau avec alloco.jpeg" alt="Dibi"><div class="gallery-overlay"><span>Dibi Agneau</span></div></div>
-        <div class="gallery-item"><img src="images/Mafe viande.jpeg" alt="Mafé"><div class="gallery-overlay"><span>Le Mafé</span></div></div>
-        <div class="gallery-item"><img src="images/Yassa poisson.jpeg" alt="Yassa"><div class="gallery-overlay"><span>Yassa Poisson</span></div></div>
-        <div class="gallery-item"><img src="images/Attieke poisson avec alloco.jpeg" alt="Attiéké"><div class="gallery-overlay"><span>Atthiéké Poisson</span></div></div>
-        <div class="gallery-item"><img src="images/Attieke poulet avec allocos.jpeg" alt="Poulet"><div class="gallery-overlay"><span>Atthiéké Poulet</span></div></div>
-        <div class="gallery-item"><img src="images/Riz rouge avec poissons  légumes carotte chou manioc aubergine nave.jpeg" alt="Thieboudienne"><div class="gallery-overlay"><span>Riz au Poisson
-</span></div></div>
-    </section>
-
-    <section class="info-section section" id="contact">
+<!-- MENU -->
+<section id="menu">
+    <div class="menu-header-wrap">
         <div>
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px;">Horaires</h2>
-            <ul class="hours-list">
-                <li><span>Lundi - Dimanche</span> <span style="color: var(--gold); font-weight: bold;">11:00 - 23:00</span></li>
+            <span class="section-tag reveal">Gastronomie</span>
+            <h2 class="section-title reveal reveal-delay-1">Notre <em>Carte</em></h2>
+        </div>
+        <div class="menu-tabs reveal reveal-delay-2">
+            <button class="tab-btn active" onclick="switchTab('plats', this)">Plats</button>
+            <button class="tab-btn" onclick="switchTab('entrees', this)">Entrées & Desserts</button>
+            <button class="tab-btn" onclick="switchTab('boissons', this)">Boissons</button>
+        </div>
+    </div>
+
+    <!-- PLATS -->
+    <div class="menu-panel active" id="tab-plats">
+        <div class="menu-column">
+            <div class="menu-section-title">Spécialités Maison</div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Riz à la Viande</div>
+                    <div class="item-desc">Bœuf ou Agneau · riz, protéines, légumes, piment</div>
+                </div>
+                <div class="item-price">15€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Dibi Agneau</div>
+                    <div class="item-desc">Protéines, marinade et oignons caramélisés</div>
+                </div>
+                <div class="item-price">18€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Atthiéké</div>
+                    <div class="item-desc">Poisson ou Poulet · semoule de manioc, légumes, piment</div>
+                </div>
+                <div class="item-price">15€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Mafé</div>
+                    <div class="item-desc">Bœuf ou Poulet · riz, cacahuète, légumes, piment</div>
+                </div>
+                <div class="item-price">15€</div>
+            </div>
+        </div>
+        <div class="menu-column">
+            <div class="menu-section-title">Classiques Sénégalais</div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Thiéré Bassé</div>
+                    <div class="item-desc">Poulet ou Agneau · couscous, légumes, piment</div>
+                </div>
+                <div class="item-price">16€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Poisson ou Poulet Braisé</div>
+                    <div class="item-desc">Marinade artisanale, accompagné de frites dorées</div>
+                </div>
+                <div class="item-price">15€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Riz au Poisson</div>
+                    <div class="item-desc">Riz, protéines, légumes du marché, piment</div>
+                </div>
+                <div class="item-price">15€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Yassa</div>
+                    <div class="item-desc">Poisson ou Poulet · riz, ail, olives, piment</div>
+                </div>
+                <div class="item-price">15€</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ENTRÉES & DESSERTS -->
+    <div class="menu-panel" id="tab-entrees">
+        <div class="menu-column">
+            <div class="menu-section-title">Entrées</div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Pastel ×3</div>
+                    <div class="item-desc">Beignets farcis au thon, croustillants</div>
+                </div>
+                <div class="item-price">5€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Fataya ×3</div>
+                    <div class="item-desc">Beignets farcis au bœuf épicé</div>
+                </div>
+                <div class="item-price">5€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Nems ×3</div>
+                    <div class="item-desc">Au poulet, sauce maison</div>
+                </div>
+                <div class="item-price">6€</div>
+            </div>
+        </div>
+        <div class="menu-column">
+            <div class="menu-section-title">Desserts</div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Thiakry</div>
+                    <div class="item-desc">Semoule de mil, yaourt sucré onctueux</div>
+                </div>
+                <div class="item-price">5€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Ngalakh</div>
+                    <div class="item-desc">Mil, yaourt, pâte d'arachide, saveur unique</div>
+                </div>
+                <div class="item-price">5€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Salade de Fruits</div>
+                    <div class="item-desc">Sélection de fruits de saison frais</div>
+                </div>
+                <div class="item-price">5€</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOISSONS -->
+    <div class="menu-panel" id="tab-boissons">
+        <div class="menu-column">
+            <div class="menu-section-title">Jus Artisanaux Maison</div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Verre de Jus Maison</div>
+                    <div class="item-desc">Bissap · Baobab · Gingembre</div>
+                </div>
+                <div class="item-price">3€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Bouteille Jus 50cl</div>
+                    <div class="item-desc">Bissap · Baobab · Gingembre</div>
+                </div>
+                <div class="item-price">5€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Bouteille Jus 1L</div>
+                    <div class="item-desc">Bissap · Baobab · Gingembre</div>
+                </div>
+                <div class="item-price">10€</div>
+            </div>
+        </div>
+        <div class="menu-column">
+            <div class="menu-section-title">Boissons & Eaux</div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Sodas 33cl</div>
+                    <div class="item-desc">Coca, Zéro, Fanta, Oasis, Orangina, Ice-Tea</div>
+                </div>
+                <div class="item-price">2€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Eau Minérale 50cl</div>
+                    <div class="item-desc">Évian · Perrier</div>
+                </div>
+                <div class="item-price">2€</div>
+            </div>
+            <div class="menu-item">
+                <div class="item-info">
+                    <div class="item-name">Eau Gazeuse</div>
+                    <div class="item-desc">Pétillante, fraîche</div>
+                </div>
+                <div class="item-price">2€</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+    <div class="gallery-intro">
+        <div>
+            <span class="section-tag reveal" style="color: var(--gold-lt)">Nos Spécialités</span>
+            <h2 class="section-title reveal reveal-delay-1" style="color: var(--cream)">
+                L'Art dans<br><em>l'Assiette</em>
+            </h2>
+        </div>
+    </div>
+    <div class="gallery-grid-wrap reveal">
+        <div class="gallery-item">
+            <img src="images/Dibi agneau avec alloco.jpeg" alt="Dibi Agneau">
+            <div class="gallery-caption">
+                <div class="gallery-caption-name">Dibi Agneau</div>
+                <div class="gallery-caption-sub">Marinade · Oignons · Alloco</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Mafe viande.jpeg" alt="Mafé">
+            <div class="gallery-caption">
+                <div class="gallery-caption-name">Le Mafé</div>
+                <div class="gallery-caption-sub">Sauce Cacahuète · Viande</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Yassa poisson.jpeg" alt="Yassa Poisson">
+            <div class="gallery-caption">
+                <div class="gallery-caption-name">Yassa Poisson</div>
+                <div class="gallery-caption-sub">Ail · Olives · Piment</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Attieke poisson avec alloco.jpeg" alt="Atthiéké Poisson">
+            <div class="gallery-caption">
+                <div class="gallery-caption-name">Atthiéké Poisson</div>
+                <div class="gallery-caption-sub">Semoule de Manioc</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Attieke poulet avec allocos.jpeg" alt="Atthiéké Poulet">
+            <div class="gallery-caption">
+                <div class="gallery-caption-name">Atthiéké Poulet</div>
+                <div class="gallery-caption-sub">Légumes · Piment</div>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="images/Riz rouge avec poissons  légumes carotte chou manioc aubergine nave.jpeg" alt="Riz au Poisson">
+            <div class="gallery-caption">
+                <div class="gallery-caption-name">Riz au Poisson</div>
+                <div class="gallery-caption-sub">Légumes · Carotte · Chou</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <div class="contact-map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2883.2!2d5.9329!3d43.1206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s231+Av+de+la+R%C3%A9publique%2C+83000+Toulon!5e0!3m2!1sfr!2sfr!4v1"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="BFK 237 - Carte">
+        </iframe>
+        <div class="contact-map-overlay"></div>
+    </div>
+    <div class="contact-info">
+        <div class="contact-block reveal">
+            <div class="contact-label">Adresse</div>
+            <div class="contact-value">231 Av de la République<br>83000 Toulon, France</div>
+        </div>
+        <div class="contact-block reveal reveal-delay-1">
+            <div class="contact-label">Téléphone</div>
+            <div class="contact-value">
+                <a href="tel:+33753715825">07 53 71 58 25</a><br>
+                <a href="tel:+33973119310">09 73 11 93 10</a>
+            </div>
+        </div>
+        <div class="contact-block reveal reveal-delay-2">
+            <div class="contact-label">Horaires d'Ouverture</div>
+            <div class="hours-row">
+                <span>Lundi — Dimanche</span>
+                <span class="time">11:00 — 23:00</span>
+            </div>
+        </div>
+        <a href="tel:+33753715825" class="reserve-btn reveal reveal-delay-3">
+            Réserver par Téléphone
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <span class="logo-foot">BFK 237</span>
+            <p>La référence du goût et de l'hospitalité sénégalaise au cœur de Toulon. Une cuisine authentique, une chaleur humaine sincère.</p>
+        </div>
+        <div>
+            <div class="footer-col-title">Navigation</div>
+            <ul class="footer-links">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#about">Notre Histoire</a></li>
+                <li><a href="#menu">La Carte</a></li>
+                <li><a href="#gallery">Spécialités</a></li>
+                <li><a href="#contact">Nous Trouver</a></li>
             </ul>
         </div>
         <div>
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px;">Accès & Réservation</h2>
-            <p>📍 231 Av de la République, 83000 Toulon</p>
-            <p>📞 07 53 71 58 25 | 09 73 11 93 10</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>BFK 237</h4>
-                <p>La référence du goût et de l'hospitalité sénégalaise au cœur de Toulon.</p>
+            <div class="footer-col-title">Suivez-nous</div>
+            <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+                <a href="#" class="social-icon" aria-label="Facebook">FB</a>
             </div>
-            <div class="footer-col">
-                <h4>Suivez-nous</h4>
-                <p>Instagram / Facebook</p>
+            <div style="margin-top: 30px;">
+                <div class="footer-col-title">Contact</div>
+                <ul class="footer-links">
+                    <li><a href="tel:+33753715825">07 53 71 58 25</a></li>
+                    <li><a href="tel:+33973119310">09 73 11 93 10</a></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            &copy; 2025 BFK 237 TOULON - TOUS DROITS RÉSERVÉS.
-        </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2025 BFK 237 Toulon — Tous droits réservés</span>
+        <span>Cuisine Sénégalaise Authentique</span>
+    </div>
+</footer>
 
-    <script>
-        function toggleMenu() {
-            const links = document.getElementById('navLinks');
-            links.classList.toggle('active');
-        }
-    </script>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "BFK 237",
-      "image": "https://bfk237-restaurant.github.io/images/Dibi%20agneau%20avec%20alloco.jpeg",
-      "url": "https://bfk237-restaurant.github.io",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "231 Av de la République",
-        "addressLocality": "Toulon",
-        "postalCode": "83000",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.1206, 
-        "longitude": 5.9329
-      },
-      "telephone": "+33753715825",
-      "servesCuisine": "Cuisine sénégalaise",
-      "priceRange": "€€",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "11:00",
-          "closes": "23:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Friday",
-          "opens": "14:00",
-          "closes": "23:00"
-        }
-      ]
+<script>
+    // Loader
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('loader').classList.add('hidden');
+            document.getElementById('heroContent').classList.add('visible');
+        }, 1200);
+    });
+
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+        document.getElementById('navLinks').classList.toggle('active');
     }
-    </script>
+    function closeMenu() {
+        document.getElementById('navLinks').classList.remove('active');
+    }
+
+    // Menu tabs
+    function switchTab(name, btn) {
+        document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + name).classList.add('active');
+        btn.classList.add('active');
+    }
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+        const nav = document.getElementById('navLinks');
+        const btn = document.querySelector('.mobile-btn');
+        if (nav.classList.contains('active') && !nav.contains(e.target) && !btn.contains(e.target)) {
+            nav.classList.remove('active');
+        }
+    });
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "BFK 237",
+  "image": "https://bfk237-restaurant.github.io/images/Dibi%20agneau%20avec%20alloco.jpeg",
+  "url": "https://bfk237-restaurant.github.io",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "231 Av de la République",
+    "addressLocality": "Toulon",
+    "postalCode": "83000",
+    "addressCountry": "FR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 43.1206, "longitude": 5.9329 },
+  "telephone": "+33753715825",
+  "servesCuisine": "Cuisine sénégalaise",
+  "priceRange": "€€",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "11:00", "closes": "23:00"
+    }
+  ]
+}
+</script>
 </body>
 </html>
